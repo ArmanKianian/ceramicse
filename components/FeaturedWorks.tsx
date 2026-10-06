@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { ArrowLeft, Maximize2, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { works } from "@/data/works";
@@ -150,7 +149,7 @@ export default function FeaturedWorks() {
                   md:text-[3.5rem]
                 "
               >
-                بخشی از مدل‌های تولیدی
+                بخشی از نمونه‌کارهای تولیدی
               </h2>
 
               <p
@@ -202,18 +201,6 @@ export default function FeaturedWorks() {
                 index === 0 ||
                 index === 5 ||
                 index === 10;
-
-              const imageSizes = featured
-                ? `
-                    (max-width: 640px) 50vw,
-                    (max-width: 1024px) 50vw,
-                    50vw
-                  `
-                : `
-                    (max-width: 640px) 50vw,
-                    (max-width: 1024px) 33vw,
-                    25vw
-                  `;
 
               return (
                 <button
@@ -303,13 +290,15 @@ export default function FeaturedWorks() {
 
                     {/* Real image */}
                     {work.image && (
-                      <Image
+                      <img
                         src={work.image}
                         alt={work.title}
-                        fill
                         loading="lazy"
-                        sizes={imageSizes}
                         className="
+                          absolute
+                          inset-0
+                          h-full
+                          w-full
                           object-cover
                           transition-transform
                           duration-700
@@ -538,13 +527,17 @@ export default function FeaturedWorks() {
               </div>
 
               {activeItem.image && (
-                <Image
+                <img
                   src={activeItem.image}
                   alt={activeItem.title}
-                  fill
                   loading="eager"
-                  sizes="(max-width: 1024px) 94vw, 1024px"
-                  className="object-contain"
+                  className="
+                    absolute
+                    inset-0
+                    h-full
+                    w-full
+                    object-contain
+                  "
                 />
               )}
             </div>
