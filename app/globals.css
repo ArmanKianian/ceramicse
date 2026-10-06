@@ -1,0 +1,321 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f3efe7;
+  --foreground: #25231f;
+
+  --surface: #e9e3d8;
+  --surface-light: #faf8f3;
+
+  --clay: #a9674c;
+  --clay-dark: #824a38;
+  --terracotta: #b97859;
+
+  --muted: #746d63;
+  --border: rgba(37, 35, 31, 0.13);
+
+  --container: 1240px;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-vazirmatn), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--clay);
+  color: #fff;
+}
+
+/* --------------------------------
+   Layout
+-------------------------------- */
+
+.container {
+  width: min(calc(100% - 40px), var(--container));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: 120px;
+}
+
+/* --------------------------------
+   Typography
+-------------------------------- */
+
+.font-display {
+  font-family: var(--font-vazirmatn), sans-serif;
+  font-weight: 600;
+}
+
+.english-display {
+  font-family: var(--font-playfair), serif;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--clay);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 26px;
+  height: 1px;
+  flex: 0 0 auto;
+  background: currentColor;
+}
+
+/* --------------------------------
+   Buttons
+-------------------------------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 48px;
+  padding-inline: 22px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-vazirmatn), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: var(--foreground);
+  color: var(--background);
+  box-shadow: 0 8px 20px rgba(37, 35, 31, 0.08);
+}
+
+.button-primary:hover {
+  background: var(--clay-dark);
+  box-shadow: 0 12px 26px rgba(130, 74, 56, 0.16);
+}
+
+.button-outline {
+  border-color: var(--border);
+  background: transparent;
+}
+
+.button-outline:hover {
+  border-color: rgba(37, 35, 31, 0.24);
+  background: rgba(37, 35, 31, 0.025);
+}
+
+/* --------------------------------
+   Focus
+-------------------------------- */
+
+:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 3px;
+}
+
+/* --------------------------------
+   Sections
+-------------------------------- */
+
+section,
+footer {
+  position: relative;
+  max-width: 100%;
+}
+
+/* --------------------------------
+   Surface utility
+-------------------------------- */
+
+.surface {
+  background: var(--surface);
+}
+
+.surface-light {
+  background: var(--surface-light);
+}
+
+/* --------------------------------
+   Overflow
+-------------------------------- */
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* --------------------------------
+   Scrollbar
+-------------------------------- */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c6bdae;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clay);
+}
+
+/* --------------------------------
+   Tablet
+-------------------------------- */
+
+@media (max-width: 1024px) {
+  .container {
+    width: min(calc(100% - 32px), var(--container));
+  }
+
+  .section {
+    padding-block: 96px;
+  }
+}
+
+/* --------------------------------
+   Mobile
+-------------------------------- */
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 82px;
+  }
+
+  .container {
+    width: min(calc(100% - 28px), var(--container));
+  }
+
+  .section {
+    padding-block: 76px;
+  }
+
+  .button {
+    min-height: 50px;
+    padding-inline: 18px;
+    font-size: 13px;
+  }
+
+  .eyebrow {
+    gap: 8px;
+    font-size: 10px;
+  }
+
+  .eyebrow::before {
+    width: 20px;
+  }
+}
+
+/* --------------------------------
+   Small mobile
+-------------------------------- */
+
+@media (max-width: 480px) {
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .section {
+    padding-block: 68px;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+/* --------------------------------
+   Very small mobile
+-------------------------------- */
+
+@media (max-width: 360px) {
+  .container {
+    width: calc(100% - 20px);
+  }
+
+  .section {
+    padding-block: 60px;
+  }
+}
+
+/* --------------------------------
+   Reduced motion
+-------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
